@@ -94,14 +94,6 @@ Test.Status<-Test.data$Status
 
 ##########################################################
 ###################Modelling##############################
-#implementing Support Vector Machine for classification
-
-Model.1 <- svm(Status~., data = Train.data)
-
-summary(Model.1)
-
-pred_m1 <- predict(Model.1, Test.data, type="response")
-colAUC(pred_m1, Test.data$Status, plotROC=TRUE)
 
 #implementing Logistic Regression to classify Status
 
@@ -131,6 +123,17 @@ confusionMatrix(pred_tree, Test.data$Status)
 
 # Save the file.
 dev.off()
+
+
+#implementing Support Vector Machine for classification
+
+Model.1 <- svm(Status~., data = Train.data)
+
+summary(Model.1)
+
+pred_m1 <- predict(Model.1, Test.data, type="response")
+colAUC(pred_m1, Test.data$Status, plotROC=TRUE)
+
 
 
 
